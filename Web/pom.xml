@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  	<parent>
+    	<groupId>com.exist</groupId>
+    	<artifactId>servlets-exercise</artifactId>
+    	<version>1.0-SNAPSHOT</version>
+  	</parent>
+	
+  	<groupId>com.exist</groupId>
+  	<artifactId>web</artifactId>
+  	<version>1.0-SNAPSHOT</version>
+  	<packaging>war</packaging>
+  	<name>Web</name>
+  	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<spring.version>4.1.6.RELEASE</spring.version>
+	</properties>
+  
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		   <artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+  	 	</dependency>
+
+		 <dependency>
+			  <groupId>org.springframework</groupId>
+			  <artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		 </dependency>
+
+  		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		  	<version>${spring.version}</version>
+    	</dependency>
+		
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.23</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		 <dependency>
+   		 	<groupId>org.springframework</groupId>
+   			<artifactId>spring-webmvc</artifactId>
+   			<version>${spring.version}</version>
+  		</dependency>
+		
+		<dependency>
+			 <groupId>org.springframework</groupId>
+			  <artifactId>spring-context</artifactId>
+			 <version>${spring.version}</version>
+		</dependency>
+	  
+   	 	<dependency>
+      		<groupId>com.exist</groupId>
+      		<artifactId>service</artifactId>
+      		<version>1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+      		<groupId>com.exist</groupId>
+      		<artifactId>persistence</artifactId>
+      		<version>1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+      		<groupId>com.exist</groupId>
+      		<artifactId>utility</artifactId>
+      		<version>1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		<dependency>
+        	<groupId>com.zaxxer</groupId>
+        	<artifactId>HikariCP</artifactId>
+        	<version>2.4.7</version>
+    	</dependency>
+  	</dependencies>
+  
+  	<build>
+        <plugins>
+			  <plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.8.v20121106</version>
+			  </plugin>
+			
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+	                 </archive>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+</project>
