@@ -3,18 +3,21 @@ package com.exist.service;
 import com.exist.model.*;
 import com.exist.dao.*;
 import com.exist.dto.*;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class PersonService {
-	private PersonDao personDao;
 	
-	public PersonService(PersonDao personDao){
-		this.personDao = personDao;
-	}
+	@Autowired
+	private PersonDao personDao;
 	
 	public List<PersonDto> getPersons(String order){
 		List<Person> persons = new ArrayList<>();

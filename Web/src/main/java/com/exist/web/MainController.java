@@ -2,6 +2,7 @@ package com.exist.web.controllers;
 
 import com.exist.service.PersonService;
 import com.exist.dto.PersonDto;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -9,8 +10,8 @@ import java.util.Date;
 import java.util.Map;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.io.IOException;
 import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,18 +25,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping({"main","/"})
 public class MainController{
 
-	private PersonService personService;
-	private static final String MAIN_PAGE = "main";
-		
 	@Autowired
-	public MainController(PersonService personService){
-		this.personService = personService;
-	}
-	/*@RequestMapping({"/","/home"})
-	public String showHomePage(Model model){
-		model.addAttribute("persons", personService.getPersons(""));
-		return MAIN_PAGE;
-	}*/
+	private PersonService personService;
+	
+	private static final String MAIN_PAGE = "main";
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView showHomePage(){

@@ -3,16 +3,20 @@ package com.exist.service;
 import com.exist.model.Role;
 import com.exist.dao.RoleDao;
 import com.exist.dto.RoleDto;
+
 import java.util.List;
 import java.util.ArrayList;
 
-public class RoleService{
-	private RoleDao roleDao;
-	private List<RoleDto> roles = new ArrayList<>();
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-	public RoleService(RoleDao roleDao){
-		this.roleDao = roleDao;
-	}
+@Service
+public class RoleService{
+	
+	@Autowired
+	private RoleDao roleDao;
+	
+	private List<RoleDto> roles = new ArrayList<>();
 	
 	public RoleDto getRole(int roleId){
 		return roleDao.getRoleById(roleId).toDto();

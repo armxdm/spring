@@ -1,22 +1,25 @@
 package com.exist.dao;
 
 import com.exist.utility.SessionUtil;
-import org.hibernate.HibernateException;
 import com.exist.model.Person;
 import com.exist.model.Contact;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.HibernateException;
+
 import java.util.List;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class PersonDao{
 	
+	@Autowired
 	private SessionUtil sessionUtil;
-	
-	public PersonDao(SessionUtil sessionUtil){
-		this.sessionUtil = sessionUtil;
-	}
 	
 	 public List<Person> getPersons(String order) {
        	List<Person> persons = null;

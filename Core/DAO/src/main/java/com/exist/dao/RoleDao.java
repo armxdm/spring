@@ -1,19 +1,22 @@
 package com.exist.dao;
 
-import org.hibernate.HibernateException;
 import com.exist.model.Role;
 import com.exist.utility.SessionUtil;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.HibernateException;
+
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class RoleDao {
 	
+	@Autowired
 	private SessionUtil sessionUtil;
-	
-	public RoleDao(SessionUtil sessionUtil){
-		this.sessionUtil = sessionUtil;
-	}
 	
     public List<Role> getRoles() {
      	List<Role> roles = null;

@@ -21,11 +21,15 @@
   
 	<dependencies>
 		<dependency>
+   		 	<groupId>org.springframework</groupId>
+   			<artifactId>spring-webmvc</artifactId>
+   			<version>${spring.version}</version>
+  		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -49,12 +53,6 @@
 			  <artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		 </dependency>
-
-  		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		  	<version>${spring.version}</version>
-    	</dependency>
 		
 		<dependency>
 			<groupId>org.freemarker</groupId>
@@ -75,24 +73,6 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-		
-		 <dependency>
-   		 	<groupId>org.springframework</groupId>
-   			<artifactId>spring-webmvc</artifactId>
-   			<version>${spring.version}</version>
-  		</dependency>
-		
-		<dependency>
-			 <groupId>org.springframework</groupId>
-			  <artifactId>spring-context</artifactId>
-			 <version>${spring.version}</version>
-		</dependency>
-	  
    	 	<dependency>
       		<groupId>com.exist</groupId>
       		<artifactId>service</artifactId>
@@ -115,11 +95,25 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
+		
 		<dependency>
         	<groupId>com.zaxxer</groupId>
         	<artifactId>HikariCP</artifactId>
         	<version>2.4.7</version>
     	</dependency>
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.6</version>
+		</dependency>
+
   	</dependencies>
   
   	<build>
