@@ -1,14 +1,11 @@
 package com.exist.dao;
 
-import com.exist.utility.SessionUtil;
+import com.exist.dao.util.SessionUtil;
 import com.exist.model.User;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.HibernateException;
-import org.hibernate.criterion.Restrictions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,20 +13,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDao{
 	
-	/*@Autowired
-	private SessionFactory factory;
-
-	private Session session; 
-	private Transaction transaction;*/
 	@Autowired
 	private SessionUtil sessionUtil;
 
 	public User findByUsername(String username){
-		/*User user = (User) sessionFactory.getCurrentSession()
-			.createCriteria(User.class)
-			.add(Restrictions.eq("username",username))
-			.uniqueResult();
-		return user;*/	
 		User user = null;
 		try{
 			sessionUtil.openCurrentSessionAndTransaction();
@@ -53,6 +40,5 @@ public class UserDao{
         } finally{
 			sessionUtil.closeCurrentSessionAndTransaction();
 		}
-		//sessionFactory.getCurrentSession().save(user);
 	}
 }

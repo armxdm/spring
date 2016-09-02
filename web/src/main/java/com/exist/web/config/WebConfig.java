@@ -1,13 +1,10 @@
 package com.exist.web.config;
 
-import com.exist.service.*;
-import com.exist.dao.*;
-import com.exist.utility.SessionUtil;
-
 import java.util.Properties;
-import java.util.ArrayList;
-import java.util.Arrays;
 import javax.sql.DataSource;
+
+import org.hibernate.SessionFactory;
+import com.zaxxer.hikari.HikariDataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,15 +15,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-import org.springframework.context.annotation.Import;
 
-import org.hibernate.SessionFactory;
-import com.zaxxer.hikari.HikariDataSource;
-
-@Import({ SecurityConfig.class })
 @EnableWebMvc
 @EnableAspectJAutoProxy
 @Configuration
@@ -36,13 +27,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
     	registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
-	
-	@Bean
-	public SessionUtil sessionUtil(){
-		return new SessionUtil();
 	}
 	
+	//Fremmarker Configuration
 	@Bean
     public FreeMarkerConfigurer freemarkerConfig() {
         FreeMarkerConfigurer result = new FreeMarkerConfigurer();
@@ -60,6 +47,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return fmvr;
     }
 	
+	//Data Source Configuration
 	@Bean
     public DataSource dataSource() throws Exception {
         HikariDataSource dataSource = new HikariDataSource();

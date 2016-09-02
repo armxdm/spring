@@ -1,12 +1,10 @@
 package com.exist.dao;
 
-import com.exist.utility.SessionUtil;
+import com.exist.dao.util.SessionUtil;
 import com.exist.model.Person;
 import com.exist.model.Contact;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.Query;;
 import org.hibernate.HibernateException;
 
 import java.util.List;
@@ -36,7 +34,6 @@ public class PersonDao{
 			} else if (order.equals("ID")){
 				query = session.createQuery("FROM Person p ORDER BY p.id ASC");
        		}
-			//query.setCacheable(true);
 			persons = query.list();
 		} catch (HibernateException e) {
            sessionUtil.rollbackTransaction(e);
@@ -136,22 +133,12 @@ public class PersonDao{
 	}
 	
 	public void addPerson(Person person){
-	   // Session session = factory.openSession();
-		//Transaction tx = null;
 		try {
-			//tx= session.beginTransaction();
-		    //session.persist(person);
-			//tx.commit();
 			sessionUtil.openCurrentSessionAndTransaction();
 			sessionUtil.getSession().persist(person);
 	    } catch (HibernateException e) {
-            /*if (tx!=null) {
-				tx.rollback();
-		 	}
-         	throw new RuntimeException(e);*/
 			sessionUtil.rollbackTransaction(e);
         } finally{
-			//session.close();
 			sessionUtil.closeCurrentSessionAndTransaction();
 		}
 	}
@@ -177,27 +164,4 @@ public class PersonDao{
 			sessionUtil.closeCurrentSessionAndTransaction();
 		}
     }
-	
-	public void updateContact (Contact contact) {
-	    try {
-			sessionUtil.openCurrentSessionAndTransaction();
-		   	sessionUtil.getSession().update(contact);
-	    } catch (HibernateException e) {
-			sessionUtil.rollbackTransaction(e);
-        } finally {
-			sessionUtil.closeCurrentSessionAndTransaction();
-		}
-    }
-	
-	public void deleteContact (Contact contact) {
-		try{
-			sessionUtil.openCurrentSessionAndTransaction();
-			sessionUtil.getSession().delete(contact);
-        }catch (HibernateException e) {
-            sessionUtil.rollbackTransaction(e);
-        } finally {
-			sessionUtil.closeCurrentSessionAndTransaction();
-		}
-	}
-   
 }

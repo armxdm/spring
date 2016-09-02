@@ -1,7 +1,7 @@
 package com.exist.dao;
 
 import com.exist.model.Role;
-import com.exist.utility.SessionUtil;
+import com.exist.dao.util.SessionUtil;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
