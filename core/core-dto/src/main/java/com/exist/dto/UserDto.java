@@ -1,71 +1,69 @@
 package com.exist.dto;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Date;
 
-public class UserDto{
+public class UserDto {
 
-	private int id;
-	
-	private String username;
+    private int id;
 
-	private String password;
+    private String username;
 
-	private boolean enabled;
+    private String password;
 
-	private UserRoleDto userRoleDto;
-	
-	private Date dateCreated;
+    private boolean enabled;
 
-	public UserDto() {
-	}
+    private UserRoleDto userRoleDto;
 
-	public UserDto(String username, String password, UserRoleDto userRoleDto) {
-		this.username = username;
-		this.password = password;
-		//this.name = name;
-		this.userRoleDto = userRoleDto;
-	}
+    private Date dateCreated;
 
-	public int getId(){
-		return this.id;
-	}
+    public UserDto() {
+    }
 
-	public void setId(int id){
-		this.id = id;
-	}
-	
-	public String getUsername() {
-		return this.username;
-	}
+    public UserDto(String username, String password, UserRoleDto userRoleDto) {
+        this.username = username;
+        this.password = password;
+        //this.name = name;
+        this.userRoleDto = userRoleDto;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public String getPassword() {
-		return this.password;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getUsername() {
+        return this.username;
+    }
 
-	public boolean isEnabled() {
-		return this.enabled;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    public String getPassword() {
+        return this.password;
+    }
 
-	public UserRoleDto getUserRoleDto() {
-		return this.userRoleDto;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setUserRoleDto(UserRoleDto userRoleDto) {
-		this.userRoleDto = userRoleDto;
-	}
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public UserRoleDto getUserRoleDto() {
+        return this.userRoleDto;
+    }
+
+    public void setUserRoleDto(UserRoleDto userRoleDto) {
+        this.userRoleDto = userRoleDto;
+    }
 
 }

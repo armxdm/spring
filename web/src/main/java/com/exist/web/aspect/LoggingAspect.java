@@ -1,39 +1,40 @@
 package com.exist.web.aspect;
 
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.stereotype.Component;
 import org.apache.log4j.Logger;
-import com.exist.dto.*;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class LoggingAspect{
-	
-	static Logger log = Logger.getLogger(LoggingAspect.class.getName());
-	
-	@Pointcut("execution(* com.exist.service.*.add*(..))")
-	private void addMethods(){}
-	
-	@Pointcut("execution(* com.exist.service.*.update*(..))")
-	private void updateMethods(){}
-	
-	@Pointcut("execution(* com.exist.service.*.delete*(..))")
-	private void deleteMethods(){}
-	
-	@Pointcut("addMethods() || updateMethods() || deleteMethods()")
-	private void loggableServiceMethods(){}
-	
-	@After("loggableServiceMethods()")
-	public void logServiceMethods(JoinPoint joinPoint){
-		log.info("Executed: " + joinPoint.getSignature().getName());
-	}
-	/*@After("addMethods()")
-	public void logAddMethod(JoinPoint joinPoint){
+public class LoggingAspect {
+
+    static Logger log = Logger.getLogger(LoggingAspect.class.getName());
+
+    @Pointcut("execution(* com.exist.service.*.add*(..))")
+    private void addMethods() {
+    }
+
+    @Pointcut("execution(* com.exist.service.*.update*(..))")
+    private void updateMethods() {
+    }
+
+    @Pointcut("execution(* com.exist.service.*.delete*(..))")
+    private void deleteMethods() {
+    }
+
+    @Pointcut("addMethods() || updateMethods() || deleteMethods()")
+    private void loggableServiceMethods() {
+    }
+
+    @After("loggableServiceMethods()")
+    public void logServiceMethods(JoinPoint joinPoint) {
+        log.info("Executed: " + joinPoint.getSignature().getName());
+    }
+    /*@After("addMethods()")
+    public void logAddMethod(JoinPoint joinPoint){
 		//log.info("[%s] Added: (%s)", MethodSignature.class.cast(joinPoint.getSignature()).getMethod().getName(), joinPoint.getArgs()); 
 		log.info("[" + MethodSignature.class.cast(joinPoint.getSignature()).getMethod().getName() + "] Added: " + joinPoint.getArgs());
 	}
@@ -101,5 +102,5 @@ public class LoggingAspect{
 		}
 		return roleName;
 	}*/
-	
+
 }

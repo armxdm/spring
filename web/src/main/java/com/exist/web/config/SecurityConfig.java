@@ -1,7 +1,6 @@
 package com.exist.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,55 +10,48 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.encrypt.TextEncryptor;
-import org.springframework.security.crypto.encrypt.Encryptors;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-
-import com.exist.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	UserDetailsService userDetailsService;
+    @Autowired
+    UserDetailsService userDetailsService;
+    @Autowired
+    CustomAuthenticationSuccessHandler successHandler;
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
-	
-	@Autowired
-	CustomAuthenticationSuccessHandler successHandler;
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-	    http.authorizeRequests()
-        	.antMatchers("/resources/**", "/main", "/create_account", "/").permitAll()
-        	.antMatchers("/delete", "/role", "/person").hasAuthority("ADMIN")
-        	.anyRequest().authenticated()
-        .and()
-        	.formLogin()
-        	.loginPage("/login")
-        	.loginProcessingUrl("/login/authenticate")
-        	.successHandler(successHandler)
-        	.permitAll()
-		.and()
-        	.logout()
-        	.permitAll()
-        .and()
-       		.csrf()
-        .and()
-        	.exceptionHandling()
-        	.accessDeniedPage("/denied");
-	}
+        http.authorizeRequests()
+                .antMatchers("/resources/**", "/main", "/create_account", "/").permitAll()
+                .antMatchers("/delete", "/role", "/person").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login/authenticate")
+                .successHandler(successHandler)
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll()
+                .and()
+                .csrf()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/denied");
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder(){
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder;
-	}
-	
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder;
+    }
+
 }
