@@ -14,7 +14,7 @@
 			<center><h1>Create Account </h1></center>
 			<br>
 				<#if success??>
-				<div class="alert alert-success text-center" role="alert">${success}</div>
+				    <div class="alert alert-success text-center" role="alert">${success}</div>
 				</#if>
 			<form action="/create_account/submit" method="POST">
 				<div class="form-group">
@@ -33,7 +33,7 @@
 					</select>
 				</div>
 				<button type="submit" class="btn btn-primary center-block">Submit</button>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         	</form>
 				<br><br><center><a href="/login"> Back to Log In Page </a></center>
 		</div>
